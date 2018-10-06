@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<h1>Signup</h1>
+	<form action="" method="post" novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.username.label }}<br>
+			{{ form.username(size=32) }}
+			{% for error in form.username.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.full_name.label }}<br>
+			{{ form.full_name(size=32) }}
+			{% for error in form.full_name.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.tutor_group.label }}<br>
+			{{ form.tutor_group(size=32) }}
+			{% for error in form.tutor_group.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.password.label }}<br>
+			{{ form.password(size=32) }}
+			{% for error in form.password.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.password2.label }}<br>
+			{{ form.password2(size=32) }}
+			{% for error in form.password.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>Have an account? <a href="{{ url_for('login') }}">Login</a></p>
+		<p>
+			{{ form.submit() }}
+		</p>
+	</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<h1>View Orders</h1>
+	{% if orders_length != 0 %}
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Order ID</th>
+					<th>Order Name</th>
+					<th>Filename</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+		{% for order in orders %}
+			<tbody>
+				<tr>
+					<td>{{ order.id }}</td>
+					<td>{{ order.name }}</td>
+					<td>{{ order.filename }}</td>
+					{% if order.status == 0 %}
+					<td style="color: #000000">Sent</td>
+					{% elif order.status == 1 %}
+					<td style="color: #ffff00">Processing</td>
+					{% elif order.status == 2 %}
+					<td style="color: #aaff00">Delivering</td>
+					{% elif order.status == 4 %}
+					<td style="color: #00ff00">Complete</td>
+					{% else %}
+					<td style="color: #ff0000">Failed</td>
+					{% endif %}
+				</tr>
+			</tbody>
+		{% endfor %}
+		</table>
+	{% else %}
+		<p>You have no orders. Click on <a href="{{ url_for('new_order') }}">New Order</a> to place a new order.</p>
+	{% endif %}
+{% endblock %}
