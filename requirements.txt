@@ -34,7 +34,6 @@ psutil==5.4.7
 pycups==1.9.73
 pycurl==7.43.0.2
 pyparsing==2.2.2
-pysmbc==1.0.15.8
 python-dotenv==0.9.1
 python-editor==1.0.3
 requests==2.19.1
