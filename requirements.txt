@@ -3,7 +3,6 @@ aniso8601==3.0.2
 appdirs==1.4.3
 Babel==2.6.0
 blinker==1.4
-btrfsutil==1.0.0
 CacheControl==0.12.5
 chardet==3.0.4
 Click==7.0
