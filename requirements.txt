@@ -26,7 +26,6 @@ httpie==0.9.9
 idna==2.7
 itsdangerous==0.24
 Jinja2==2.10
-lensfun==0.3.2
 lockfile==0.12.2
 louis==3.7.0
 Mako==1.0.7
