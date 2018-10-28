@@ -61,7 +61,7 @@ class UserGet(Resource):
             'full_name': user.full_name,
             'tutor_group': user.tutor_group
         }
-        return data
+        return data.json()
 
 class UserPut(Resource):
     def put(self, username, password, full_name, tutor_group):
@@ -82,7 +82,7 @@ class OrderGet(Resource):
             data[order.id]['name'] = order.name
             data[order.id]['filename'] = order.filename
             data[order.id]['status'] = order.status
-        return data
+        return data.josn()
 
 @login.user_loader
 def load_user(id):
