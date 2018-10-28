@@ -1,5 +1,5 @@
 import os
-from flask import render_template, flash, redirect, url_for, request, send_file
+from flask import render_template, flash, redirect, url_for, request, send_file, send_from_directory
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm, SignupForm, ChangePasswordForm, NewOrderForm
@@ -102,3 +102,7 @@ def new_order():
 @app.route('/uploads/<path:filename>', methods=['GET', 'POST'])
 def download(filename):
     return send_file(os.path.join(os.path.abspath(''), app.config['UPLOAD_FOLDER'], filename), as_attachment=True)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(os.path.abspath('')), 'favicon.ico')
