@@ -1,4 +1,5 @@
 alembic==1.0.0
+arrow==0.12.1
 aniso8601==3.0.2
 appdirs==1.4.3
 Babel==2.6.0
@@ -44,3 +45,4 @@ urllib3==1.23
 webencodings==0.5.1
 Werkzeug==0.14.1
 WTForms==2.2.1
+
