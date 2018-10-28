@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager, current_user
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse
 from os import listdir
 from os.path import isfile, join
 
@@ -19,7 +19,7 @@ admin = Admin(app)
 api = Api(app)
 
 from app import routes, models, errors
-from app.models import User, Order, UserGet, UserPut, OrderGet
+from app.models import *
 
 class OrderModelView(ModelView):
     def is_accessible(self):
@@ -43,9 +43,11 @@ def upload_list():
 
 admin.add_view(OrderModelView(models.User, db.session))
 admin.add_view(OrderModelView(models.Order, db.session))
+admin.add_view(OrderModelView(models.Notification, db.session))
 
 app.jinja_env.globals.update(upload_list=upload_list)
 
-api.add_resource(UserGet, '/api/user/<int:user_id>')
-api.add_resource(OrderGet, '/api/order/<int:user_id>')
-api.add_resource(UserPut, '/api/user/<string:username>/<string:password>/<string:full_name>/<string:tutor_group>')
+api.add_resource(UserAPI, '/api/users/<int:user_id>')
+api.add_resource(UsersAPI, '/api/users')
+api.add_resource(OrderAPI, '/api/users/<int:user_id>/orders')
+api.add_resource(NotificationsAPI, '/api/notifications')
