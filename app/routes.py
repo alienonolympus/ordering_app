@@ -105,4 +105,4 @@ def download(filename):
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(os.path.abspath('')), 'favicon.ico')
+    return send_from_directory(os.path.join(os.path.abspath(''), 'static'), 'favicon.ico')
