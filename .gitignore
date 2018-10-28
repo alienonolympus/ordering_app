@@ -113,4 +113,3 @@ dmypy.json
 # misc
 /uploads
 *.db
-migrations
