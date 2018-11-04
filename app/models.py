@@ -43,6 +43,25 @@ class Notification(db.Model):
     def __repr__(self):
         return '<notification {}>'.format(self.id)
 
+class LoginAPI(Resource):
+    def put(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('username')
+        parser.add_argument('password')
+        args = parser.parse_args()
+        username, password = args['username'], args['password']
+        user = User.query.filter_by(username=username).first()
+        if user:
+            return {
+                'login': user.check_password(password),
+                'id': user.id
+            }
+        else:
+            return {
+                'login': False,
+                'id': 0
+            }
+
 class UserAPI(Resource):
     def get(self, user_id):
         user = User.query.filter_by(id=user_id).first()

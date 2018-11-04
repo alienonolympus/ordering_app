@@ -47,6 +47,7 @@ admin.add_view(OrderModelView(models.Notification, db.session))
 
 app.jinja_env.globals.update(upload_list=upload_list)
 
+api.add_resource(LoginAPI, '/api/login')
 api.add_resource(UserAPI, '/api/users/<int:user_id>')
 api.add_resource(UsersAPI, '/api/users')
 api.add_resource(OrderAPI, '/api/users/<int:user_id>/orders')
